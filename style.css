@@ -206,9 +206,65 @@ body {
   color: #555;
 }
 
+/* Clients Section */
+.clients {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  background-color: var(--color-background-alt);
+}
+
+.clients-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 2.5rem;
+}
+
+.logo-scroller {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.logo-scroller-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4rem;
+  width: max-content;
+  animation: scroll 90s linear infinite;
+}
+
+.logo-scroller-inner img {
+  height: 75px;
+  opacity: 0.8;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-scroller:hover .logo-scroller-inner {
+  animation-play-state: paused;
+}
+
+.logo-scroller-inner img:hover {
+  opacity: 1;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 /* Services Section */
 .services {
-  background-color: var(--color-background-alt);
+  background-color: var(--color-background);
 }
 .services-grid {
   display: grid;
@@ -217,23 +273,66 @@ body {
 }
 
 .service-card {
-  background: var(--color-background);
+  background: var(--color-background-alt);
   padding: 2.5rem 2rem;
   border-radius: 12px;
-  box-shadow: var(--card-shadow);
   border-top: 4px solid var(--color-accent);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 16px 32px rgba(13, 44, 84, 0.15);
+  box-shadow: var(--card-shadow);
 }
 
 .service-card h3 {
   color: var(--color-primary);
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
+}
+
+/* About Section */
+.about {
+    background-color: var(--color-background-alt);
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+.about-content p {
+    margin-bottom: 2rem;
+}
+.about-item {
+    margin-bottom: 1.5rem;
+}
+.about-item h3, .about-values h3 {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+.about-values {
+    background: var(--color-background);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+.about-values ul {
+    list-style: none;
+    padding-left: 0;
+}
+.about-values li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 0.75rem;
+}
+.about-values li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 600;
 }
 
 /* Team Section */
@@ -322,11 +421,44 @@ body {
 .site-footer {
   background: var(--color-primary);
   color: var(--color-text-light);
-  text-align: center;
   padding: 2rem 0;
 }
 
+.footer-content {
+  text-align: center;
+}
+
+.footer-contact {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-contact a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: var(--color-accent);
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
 /* Responsive Styles */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 780px) {
   .nav-menu {
     position: absolute;
@@ -358,16 +490,16 @@ body {
     grid-template-columns: 1fr;
   }
 
-  /* New, Robust Hamburger Icon CSS */
+  /* Robust Hamburger Icon CSS */
   .nav-toggle {
     display: block;
     position: relative;
     width: 30px;
-    height: 24px; /* Adjusted height for better spacing */
+    height: 24px;
     border: none;
     background: transparent;
     cursor: pointer;
-    z-index: 1001; /* Ensure it's on top */
+    z-index: 1001;
   }
 
   .nav-toggle-bar,
@@ -398,7 +530,7 @@ body {
 
   /* Animation to 'X' */
   .nav-toggle[aria-expanded="true"] .nav-toggle-bar {
-    background: transparent; /* Middle bar vanishes */
+    background: transparent;
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle-bar::before {
