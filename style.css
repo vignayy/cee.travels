@@ -105,7 +105,7 @@ body {
   align-items: center;
   text-align: center;
   color: var(--color-text-light);
-  overflow: hidden; /* Important for containing the video */
+  overflow: hidden; 
 }
 
 .hero-video {
@@ -213,6 +213,10 @@ body {
 .section-description {
   font-size: 1.1rem;
   color: #555;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Clients Section */
@@ -345,6 +349,14 @@ body {
 }
 
 /* Team Section */
+.team-subheader {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -429,31 +441,52 @@ body {
 /* Footer */
 .site-footer {
   background: var(--color-primary);
-  color: var(--color-text-light);
-  padding: 2rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 3rem 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 .footer-content {
   text-align: center;
 }
 
-.footer-contact {
-  margin-bottom: 1rem;
+.footer-info {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  justify-content: space-around;
+  gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.footer-address, .footer-contact {
+  flex: 1;
+  min-width: 280px;
+  padding: 0 1rem;
+}
+
+.footer-info strong {
+  color: var(--color-accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .footer-contact a {
-  color: var(--color-text-light);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-contact a:hover {
-  color: var(--color-accent);
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 2rem;
+  margin-top: 2rem;
 }
 
 .footer-copyright {
@@ -497,6 +530,14 @@ body {
   }
   .contact-form .form-grid {
     grid-template-columns: 1fr;
+  }
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-info > div {
+    text-align: center;
   }
 
   /* Robust Hamburger Icon CSS */
